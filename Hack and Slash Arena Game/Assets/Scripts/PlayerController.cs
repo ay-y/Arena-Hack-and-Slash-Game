@@ -6,9 +6,9 @@ public class PlayerController : MonoBehaviour {
 
     bool keyboard_activated = false;
     public int controlNumber = 1;
-    int floorMask;
+    public Collider targetPlane;
 
-    public GameObject target;
+    //public GameObject target;
 
     private Rigidbody rigidBody;
     public float accel = 2000;
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour {
         {
             Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
-            if (Physics.Raycast(camRay, out floorHit, 20.0f))
+            if (targetPlane.Raycast(camRay, out floorHit, 20.0f))
             {
                 // Create a vector from the player to the point on the floor the raycast from the mouse hit.
                 Vector3 playerToMouse = floorHit.point - transform.position;
