@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     bool keyboard_activated = false;
     public int controlNumber = 1;
+    int floorMask;
 
     public GameObject target;
 
@@ -47,9 +48,6 @@ public class PlayerController : MonoBehaviour {
         lstickx = Input.GetAxis(inputHorizLeft) + 0.0001f;
         lsticky = Input.GetAxis(inputVertLeft) + 0.0001f;
 
-        // fixes a bug that makes no sense and only applies to this axis on this stick for no good reason????
-        //if (Mathf.Abs(lsticky) == 1) { lsticky = -lsticky; }
-
         // create a direction vector based on input floats
         var ldirection = new Vector3(-lsticky, 0, lstickx);
         // set vector to quaternion (angle vector)
@@ -71,27 +69,31 @@ public class PlayerController : MonoBehaviour {
         // check deadzone and set player rotation to preferred stick
         if (keyboard_activated)
         {
-            //var lookPos = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            /*lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 20.0f);
-            transform.Rotate(0, -90, 0);*/
+            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit floorHit;
+            if (Physics.Raycast(camRay, out floorHit, 20.0f))
+            {
+                // Create a vector from the player to the point on the floor the raycast from the mouse hit.
+                Vector3 playerToMouse = floorHit.point - transform.position;
 
-            //Vector3 targetPostition = new Vector3(lookPos.x, this.transform.position.y, lookPos.z);
-            this.transform.LookAt(target.transform.position);
+                // Ensure the vector is entirely along the floor plane.
+                playerToMouse.y = 0f;
 
-            /*Ray lookRay = cam.ScreenPointToRay(Input.mousePosition);
-            //RaycastHit hit = lookRay.GetPoint(10);
-            transform.LookAt(lookRay.GetPoint(10));
-            transform.rotation = new Quaternion(0.0f, transform.rotation.y, 0.0f, transform.rotation.w);*/
-        
+                // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
+                Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
 
-    }
+                // Set the player's rotation to this new rotation.
+                rigidBody.MoveRotation(newRotation);
+            }
+        }
         else if (rstickInput.magnitude > deadzone)
-        { transform.rotation = rrotation; }
+        { transform.rotation = rrotation;
+          transform.Rotate(new Vector3(0.0f, 90, 0.0f));
+        }
         else if (lstickInput.magnitude > deadzone)
-        { transform.rotation = lrotation; }
-
+        { transform.rotation = lrotation;
+          transform.Rotate(new Vector3(0.0f, 90, 0.0f));
+        }
     }
 
     private void FixedUpdate()
@@ -108,6 +110,5 @@ public class PlayerController : MonoBehaviour {
 
         // clamp max velocity
         rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity);
-      
     }
 }
