@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour {
     bool keyboard_activated = false;
     public int controlNumber = 1;
     public Collider targetPlane;
-
-    //public GameObject target;
+    public float lookSpeed = 0.2f;
 
     private Rigidbody rigidBody;
     public float accel = 2000;
@@ -83,16 +82,21 @@ public class PlayerController : MonoBehaviour {
                 Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
 
                 // Set the player's rotation to this new rotation.
-                rigidBody.MoveRotation(newRotation);
+                //rigidBody.MoveRotation(newRotation);
+                transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, lookSpeed);
             }
         }
         else if (rstickInput.magnitude > deadzone)
-        { transform.rotation = rrotation;
-          transform.Rotate(new Vector3(0.0f, 90, 0.0f));
+        {
+            transform.Rotate(new Vector3(0.0f, -90, 0.0f));
+            transform.rotation = Quaternion.Slerp(transform.rotation, rrotation, lookSpeed);
+            transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
         else if (lstickInput.magnitude > deadzone)
-        { transform.rotation = lrotation;
-          transform.Rotate(new Vector3(0.0f, 90, 0.0f));
+        {
+            transform.Rotate(new Vector3(0.0f, -90, 0.0f));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lrotation, lookSpeed);
+            transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
     }
 
