@@ -6,9 +6,8 @@ public class PlayerController : MonoBehaviour {
 
     bool keyboard_activated = false;
     public int controlNumber = 1;
-    int floorMask;
-
-    public GameObject target;
+    public Collider targetPlane;
+    public float lookSpeed = 0.2f;
 
     private Rigidbody rigidBody;
     public float accel = 2000;
@@ -71,7 +70,7 @@ public class PlayerController : MonoBehaviour {
         {
             Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
-            if (Physics.Raycast(camRay, out floorHit, 20.0f))
+            if (targetPlane.Raycast(camRay, out floorHit, 20.0f))
             {
                 // Create a vector from the player to the point on the floor the raycast from the mouse hit.
                 Vector3 playerToMouse = floorHit.point - transform.position;
@@ -83,16 +82,21 @@ public class PlayerController : MonoBehaviour {
                 Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
 
                 // Set the player's rotation to this new rotation.
-                rigidBody.MoveRotation(newRotation);
+                //rigidBody.MoveRotation(newRotation);
+                transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, lookSpeed);
             }
         }
         else if (rstickInput.magnitude > deadzone)
-        { transform.rotation = rrotation;
-          transform.Rotate(new Vector3(0.0f, 90, 0.0f));
+        {
+            transform.Rotate(new Vector3(0.0f, -90, 0.0f));
+            transform.rotation = Quaternion.Slerp(transform.rotation, rrotation, lookSpeed);
+            transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
         else if (lstickInput.magnitude > deadzone)
-        { transform.rotation = lrotation;
-          transform.Rotate(new Vector3(0.0f, 90, 0.0f));
+        {
+            transform.Rotate(new Vector3(0.0f, -90, 0.0f));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lrotation, lookSpeed);
+            transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
     }
 
