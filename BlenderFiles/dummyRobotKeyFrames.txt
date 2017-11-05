@@ -1,3 +1,0 @@
-0	: Default
-1 - 20	: Idle
-21 - 36	: Run
