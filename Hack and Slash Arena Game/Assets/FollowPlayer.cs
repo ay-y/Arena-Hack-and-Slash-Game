@@ -8,6 +8,7 @@ public class FollowPlayer : MonoBehaviour {
     public Rigidbody playerRigidBody;
     public Transform target;
     public float angleBetween;
+    public int speed;
 	// Use this for initialization
 	void Start () {
         //transform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -16,21 +17,26 @@ public class FollowPlayer : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        float speed = 5f;
-        Vector3 dir = -other.transform.position + transform.position;
+        float knockSpeed = 4f;
+        Vector3 dir = other.transform.position - transform.position;
         dir.Normalize();
         if (other.gameObject.tag == "Player")
         {
             //rigidBody.AddForce(dir * 100f);
-            rigidBody.velocity = new Vector3(dir.x * speed, 0, dir.y * speed);
+            rigidBody.velocity = new Vector3(-dir.x * knockSpeed, 0, -dir.y * knockSpeed);
         }
     }
     // Update is called once per frame
     void Update () {
+
+        
+    }
+
+    void FixedUpdate()
+    {
         Vector3 direction = target.position - transform.position;
         direction.Normalize();
         transform.LookAt(target);
-        rigidBody.AddForce(direction * 100f * Time.deltaTime);
-
-	}
+        rigidBody.AddForce(direction * speed * Time.deltaTime);
+    }
 }
