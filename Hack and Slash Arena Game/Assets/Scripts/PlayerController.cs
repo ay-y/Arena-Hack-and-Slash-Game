@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     private float rsticky = 0;
 
 	public GameObject Projectile;
+    public float primaryCooldown = 0;
 
     // Use this for initialization
     void Start () {
@@ -61,10 +62,17 @@ public class PlayerController : MonoBehaviour {
         { transform.rotation = lrotation; }
 
 		//Check to see if primary attack should happen
-		if (Input.GetKey("space")) 
+		if (Input.GetKey("space") & primaryCooldown.CompareTo(0) <= 0) 
 		{
-			Fire ();
+			Fire();
 		}
+
+        //Cooldown for primary attack
+        if(primaryCooldown.CompareTo(0) > 0)
+        {
+            primaryCooldown -= Time.deltaTime;
+        }
+
     }
 
     private void FixedUpdate()
@@ -90,5 +98,8 @@ public class PlayerController : MonoBehaviour {
 
 		// Destroy the bullet after 2 seconds
 		Destroy(bullet, 2.0f);
+
+        //Primary cooldown 
+        primaryCooldown = 1.0f;
 	}
 }
