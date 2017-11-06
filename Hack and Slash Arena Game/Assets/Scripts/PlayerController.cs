@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour {
     private float rstickx = 0;
     private float rsticky = 0;
 
+	public GameObject Projectile;
+
     // Use this for initialization
     void Start () {
         rigidBody = GetComponent<Rigidbody>();
@@ -58,6 +60,11 @@ public class PlayerController : MonoBehaviour {
         else if (lstickInput.magnitude > deadzone)
         { transform.rotation = lrotation; }
 
+		//Check to see if primary attack should happen
+		if (Input.GetKey("space")) 
+		{
+			Fire ();
+		}
     }
 
     private void FixedUpdate()
@@ -69,4 +76,19 @@ public class PlayerController : MonoBehaviour {
         rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity);
       
     }
+
+	private void Fire()
+	{
+		// Create the projectile 
+		var bullet = (GameObject)Instantiate (
+			Projectile,
+			transform.position,
+			transform.rotation);
+
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+
+		// Destroy the bullet after 2 seconds
+		Destroy(bullet, 2.0f);
+	}
 }
