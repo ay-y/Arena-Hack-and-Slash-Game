@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour {
     bool keyboard_activated = false;
     public int controlNumber = 1;
     public Collider targetPlane;
-    public float lookSpeed = 0.2f;
+    private float lookSpeed = 0.5f;
 
     private Rigidbody rigidBody;
-    public float accel = 2000;
-    public float maxVelocity = 10000;
+    private float accel = 2000;
+    private float maxVelocity = 7;
     private Quaternion yeet;
+    private Animator anim;
 
     private float lstickx = 0;
     private float lsticky = 0;
@@ -20,7 +21,6 @@ public class PlayerController : MonoBehaviour {
     private float rstickx = 0;
     private float rsticky = 0;
 
-<<<<<<< HEAD
     // Left stick inputs
     public string inputHorizLeft = "HorizontalL_P1";
     public string inputVertLeft = "VerticalL_P1";
@@ -29,18 +29,21 @@ public class PlayerController : MonoBehaviour {
     public string inputHorizRight = "HorizontalR_P1";
     public string inputVertRight = "VerticalR_P1";
 
-=======
+
 	public GameObject Projectile;
     public float primaryCooldown = 0;
->>>>>>> origin/Joe
+
 
     // Use this for initialization
     void Start () {
         rigidBody = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update() {
+        anim.SetFloat("velocity", rigidBody.velocity.magnitude);
+        Debug.Log(rigidBody.velocity.magnitude);
 
         float deadzone = 0.25f;
 
@@ -73,9 +76,9 @@ public class PlayerController : MonoBehaviour {
         // check deadzone and set player rotation to preferred stick
         if (keyboard_activated)
         {
-            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray camRay = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
-            if (targetPlane.Raycast(camRay, out floorHit, 20.0f))
+            if (targetPlane.Raycast(camRay, out floorHit, 200.0f))
             {
                 // Create a vector from the player to the point on the floor the raycast from the mouse hit.
                 Vector3 playerToMouse = floorHit.point - transform.position;
@@ -98,18 +101,18 @@ public class PlayerController : MonoBehaviour {
             transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
         else if (lstickInput.magnitude > deadzone)
-<<<<<<< HEAD
+
         {
             transform.Rotate(new Vector3(0.0f, -90, 0.0f));
             transform.rotation = Quaternion.Slerp(transform.rotation, lrotation, lookSpeed);
             transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
-=======
-        { transform.rotation = lrotation; }
+
+        //{ transform.rotation = lrotation; }
 
 		//Check to see if primary attack should happen
-		if (Input.GetKey("space") & primaryCooldown.CompareTo(0) <= 0) 
-		{
+		if ((Input.GetKey("space") || Input.GetAxis("Fire_P1")  > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+        {
 			Fire();
 		}
 
@@ -119,7 +122,7 @@ public class PlayerController : MonoBehaviour {
             primaryCooldown -= Time.deltaTime;
         }
 
->>>>>>> origin/Joe
+
     }
 
     private void FixedUpdate()
@@ -140,19 +143,21 @@ public class PlayerController : MonoBehaviour {
 
 	private void Fire()
 	{
+        var fireHeight = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        
 		// Create the projectile 
 		var bullet = (GameObject)Instantiate (
 			Projectile,
-			transform.position,
+			fireHeight,
 			transform.rotation);
 
 		// Add velocity to the bullet
-		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 60;
 
 		// Destroy the bullet after 2 seconds
 		Destroy(bullet, 2.0f);
 
         //Primary cooldown 
-        primaryCooldown = 1.0f;
+        primaryCooldown = 0.2f;
 	}
 }
