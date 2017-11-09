@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     private float rstickx = 0;
     private float rsticky = 0;
 
+<<<<<<< HEAD
     // Left stick inputs
     public string inputHorizLeft = "HorizontalL_P1";
     public string inputVertLeft = "VerticalL_P1";
@@ -28,6 +29,10 @@ public class PlayerController : MonoBehaviour {
     public string inputHorizRight = "HorizontalR_P1";
     public string inputVertRight = "VerticalR_P1";
 
+=======
+	public GameObject Projectile;
+    public float primaryCooldown = 0;
+>>>>>>> origin/Joe
 
     // Use this for initialization
     void Start () {
@@ -93,11 +98,28 @@ public class PlayerController : MonoBehaviour {
             transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
         else if (lstickInput.magnitude > deadzone)
+<<<<<<< HEAD
         {
             transform.Rotate(new Vector3(0.0f, -90, 0.0f));
             transform.rotation = Quaternion.Slerp(transform.rotation, lrotation, lookSpeed);
             transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
+=======
+        { transform.rotation = lrotation; }
+
+		//Check to see if primary attack should happen
+		if (Input.GetKey("space") & primaryCooldown.CompareTo(0) <= 0) 
+		{
+			Fire();
+		}
+
+        //Cooldown for primary attack
+        if(primaryCooldown.CompareTo(0) > 0)
+        {
+            primaryCooldown -= Time.deltaTime;
+        }
+
+>>>>>>> origin/Joe
     }
 
     private void FixedUpdate()
@@ -115,4 +137,22 @@ public class PlayerController : MonoBehaviour {
         // clamp max velocity
         rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity);
     }
+
+	private void Fire()
+	{
+		// Create the projectile 
+		var bullet = (GameObject)Instantiate (
+			Projectile,
+			transform.position,
+			transform.rotation);
+
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+
+		// Destroy the bullet after 2 seconds
+		Destroy(bullet, 2.0f);
+
+        //Primary cooldown 
+        primaryCooldown = 1.0f;
+	}
 }
