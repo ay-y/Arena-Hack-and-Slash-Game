@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         anim.SetFloat("velocity", rigidBody.velocity.magnitude);
-        Debug.Log(rigidBody.velocity.magnitude);
+        //Debug.Log(rigidBody.velocity.magnitude);
 
         float deadzone = 0.25f;
 
@@ -121,6 +121,30 @@ public class PlayerController : MonoBehaviour {
         {
             primaryCooldown -= Time.deltaTime;
         }
+
+        // comparing look and velocity direction
+
+
+        float directionOfVelocity = Mathf.Atan2(rigidBody.velocity.x, rigidBody.velocity.z) * Mathf.Rad2Deg;
+        float directionOfLook = transform.eulerAngles.y;
+        if (directionOfLook > 180)
+        {
+            directionOfLook = directionOfLook - 360;
+        }
+
+        float lookCompare = directionOfLook - directionOfVelocity;
+        if (lookCompare > 180) {
+            lookCompare -= 360;
+        }
+        if (lookCompare < -180)
+        {
+            lookCompare += 360;
+        }
+        anim.SetFloat("direction", -lookCompare);
+
+        //Debug.Log(directionOfVelocity);
+        //Debug.Log(directionOfLook);
+        Debug.Log(lookCompare);
 
 
     }
