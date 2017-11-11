@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         rigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -46,7 +47,6 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log(rigidBody.velocity.magnitude);
 
         float deadzone = 0.25f;
-
         GameObject settings = GameObject.Find("Global Settings");
         keyboard_activated = settings.GetComponent<GlobalSettings>().keyboard_activated;
         Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -94,6 +94,8 @@ public class PlayerController : MonoBehaviour {
                 transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, lookSpeed);
             }
         }
+
+        // the stick look is 90 degrees off for some reason so subtract 90 then slerp then add 90 again
         else if (rstickInput.magnitude > deadzone)
         {
             transform.Rotate(new Vector3(0.0f, -90, 0.0f));
@@ -101,14 +103,12 @@ public class PlayerController : MonoBehaviour {
             transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
         else if (lstickInput.magnitude > deadzone)
-
         {
             transform.Rotate(new Vector3(0.0f, -90, 0.0f));
             transform.rotation = Quaternion.Slerp(transform.rotation, lrotation, lookSpeed);
             transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
 
-        //{ transform.rotation = lrotation; }
 
 		//Check to see if primary attack should happen
 		if ((Input.GetKey("space") || Input.GetAxis("Fire_P1")  > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
@@ -123,8 +123,6 @@ public class PlayerController : MonoBehaviour {
         }
 
         // comparing look and velocity direction
-
-
         float directionOfVelocity = Mathf.Atan2(rigidBody.velocity.x, rigidBody.velocity.z) * Mathf.Rad2Deg;
         float directionOfLook = transform.eulerAngles.y;
         if (directionOfLook > 180)
@@ -144,7 +142,7 @@ public class PlayerController : MonoBehaviour {
 
         //Debug.Log(directionOfVelocity);
         //Debug.Log(directionOfLook);
-        Debug.Log(lookCompare);
+        //Debug.Log(lookCompare);
 
 
     }
