@@ -41,6 +41,14 @@ BlendTree:
   m_Name: Movement
   m_Childs:
   - serializedVersion: 2
+    m_Motion: {fileID: 7400004, guid: f8333acd625363544a7dfb50ded408bc, type: 3}
+    m_Threshold: -180
+    m_Position: {x: 0, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: velocity
+    m_Mirror: 0
+  - serializedVersion: 2
     m_Motion: {fileID: 7400010, guid: f8333acd625363544a7dfb50ded408bc, type: 3}
     m_Threshold: -90
     m_Position: {x: -1, y: 0}
@@ -67,16 +75,30 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400004, guid: f8333acd625363544a7dfb50ded408bc, type: 3}
     m_Threshold: 180
-    m_Position: {x: 0, y: -1}
+    m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: velocity
     m_Mirror: 0
   m_BlendParameter: direction
   m_BlendParameterY: velocity
-  m_MinThreshold: -90
+  m_MinThreshold: -180
   m_MaxThreshold: 180
   m_UseAutomaticThresholds: 0
+  m_NormalizedBlendValues: 0
+  m_BlendType: 0
+--- !u!206 &206284754814839750
+BlendTree:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BlendTree
+  m_Childs: []
+  m_BlendParameter: direction
+  m_BlendParameterY: Blend
+  m_MinThreshold: 0
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!1101 &1101215220798958710
@@ -90,7 +112,7 @@ AnimatorStateTransition:
     m_ConditionEvent: velocity
     m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102663767068046866}
+  m_DstState: {fileID: 0}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -162,7 +184,7 @@ AnimatorStateTransition:
     m_ConditionEvent: velocity
     m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102102754974940520}
+  m_DstState: {fileID: 0}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -255,7 +277,7 @@ AnimatorStateTransition:
     m_ConditionEvent: velocity
     m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102663767068046866}
+  m_DstState: {fileID: 0}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
