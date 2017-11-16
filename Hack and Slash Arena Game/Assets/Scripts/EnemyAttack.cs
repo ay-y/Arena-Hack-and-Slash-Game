@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
     public float timeBetweenAttacks = 0.5f;
-    public int attackDamage = 10;
+    public int attackDamage = 25;
 
     GameObject player;
     PlayerHealth playerHealth;
@@ -22,8 +22,7 @@ public class EnemyAttack : MonoBehaviour {
         // If the entering collider is the player...
         if (other.gameObject.tag == "Player") ;
         {
-            // ... the player is in range.
-            playerHealth.TakeDamage(25);
+            Attack();
         }
     }
     
@@ -39,10 +38,10 @@ public class EnemyAttack : MonoBehaviour {
 
     void Attack()
     {
-        timer = 0f;
-        if (playerHealth.currentHealth > 0)
+        if (playerHealth.currentHealth > 0 && timer > timeBetweenAttacks)
         {
             playerHealth.TakeDamage(attackDamage);
         }
+        timer = 0f;
     }
 }
