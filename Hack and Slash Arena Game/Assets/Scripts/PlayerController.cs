@@ -30,8 +30,20 @@ public class PlayerController : MonoBehaviour {
     public string inputVertRight = "VerticalR_P1";
 
 
-	public GameObject Projectile;
+	public GameObject W1Primary;
     public float primaryCooldown = 0;
+
+    public GameObject W1Secondary;
+    public float secondaryCooldown = 0;
+
+    public GameObject W2Primary;
+    public GameObject W2Secondary;
+
+    private AttackScript Primary;
+    private AttackScript Secondary;
+
+    private bool equipped = true;
+    private bool alreadySwitched = false;
 
 
     // Use this for initialization
@@ -111,9 +123,9 @@ public class PlayerController : MonoBehaviour {
 
 
 		//Check to see if primary attack should happen
-		if ((Input.GetKey("space") || Input.GetAxis("Fire_P1")  > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+		if ((Input.GetKey("enter") || Input.GetAxis("Primary_P1")  > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
         {
-			Fire();
+			PrimaryAttack();
 		}
 
         //Cooldown for primary attack
@@ -143,6 +155,40 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log(directionOfVelocity);
         //Debug.Log(directionOfLook);
         //Debug.Log(lookCompare);
+        //Check to see if Secondary attack should happen
+        if ((Input.GetKey("right shift") || Input.GetAxis("Secondary_P1") > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+        {
+            SecondaryAttack();
+        }
+
+        //Cooldown for secondary attack
+        if (secondaryCooldown.CompareTo(0) > 0)
+        {
+            secondaryCooldown -= Time.deltaTime;
+        }
+
+        //Check to see if equipment should be switched
+        if ((Input.GetKey("r") || Input.GetButton("Change_P1")) && !alreadySwitched)
+        {
+            equipped = !equipped;
+            alreadySwitched = true;
+        } else
+        {
+            alreadySwitched = false;
+        }
+        
+
+        //update attack reference
+        if(equipped)
+        {
+            Primary = W1Primary.GetComponent<AttackScript>();
+            Secondary = W1Secondary.GetComponent<AttackScript>();
+
+        } else 
+        {
+            Primary = W2Primary.GetComponent<AttackScript>();
+            Secondary = W2Secondary.GetComponent<AttackScript>();
+        }
 
 
     }
@@ -163,23 +209,65 @@ public class PlayerController : MonoBehaviour {
         rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity);
     }
 
-	private void Fire()
+	private void PrimaryAttack()
 	{
         var fireHeight = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-        
-		// Create the projectile 
-		var bullet = (GameObject)Instantiate (
-			Projectile,
-			fireHeight,
-			transform.rotation);
+
+        // Create the projectile 
+        GameObject attack = null;
+        if (equipped)
+        {
+            attack = (GameObject)Instantiate(
+            W1Primary,
+            fireHeight,
+            transform.rotation);
+        } else
+        {
+            attack = (GameObject)Instantiate(
+            W2Primary,
+            fireHeight,
+            transform.rotation);
+        }
 
 		// Add velocity to the bullet
-		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 60;
+		attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * Primary.getSpeed();
 
-		// Destroy the bullet after 2 seconds
-		Destroy(bullet, 2.0f);
+		// Destroy the bullet after specified amount of time
+		Destroy(attack, Primary.getDestroyTime());
 
         //Primary cooldown 
-        primaryCooldown = 0.2f;
+        primaryCooldown = Primary.getCooldown();
 	}
+
+    private void SecondaryAttack()
+    {
+        var fireHeight = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+
+        // Create the projectile 
+        GameObject attack = null;
+        if (equipped)
+        {
+            attack = (GameObject)Instantiate(
+            W1Secondary,
+            fireHeight,
+            transform.rotation);
+        }
+        else
+        {
+            attack = (GameObject)Instantiate(
+            W2Secondary,
+            fireHeight,
+            transform.rotation);
+        }
+
+        // Add velocity to the bullet
+        attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * Secondary.getSpeed();
+
+        // Destroy the bullet after specified amount of time
+        Destroy(attack, Secondary.getDestroyTime());
+
+        //secondary cooldown 
+        secondaryCooldown = Secondary.getCooldown();
+    }
+
 }

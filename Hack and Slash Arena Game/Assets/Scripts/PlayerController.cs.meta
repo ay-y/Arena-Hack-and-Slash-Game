@@ -1,14 +1,17 @@
 fileFormatVersion: 2
 guid: dfe132cf74730d646830b4bf5c2ca70d
-timeCreated: 1509933716
+timeCreated: 1510710554
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - Projectile: {fileID: 1133682699122518, guid: d8ad9757b193ce64e8d988c11b69e55b,
+  - targetPlane: {instanceID: 0}
+  - W1Primary: {fileID: 1133682699122518, guid: d8ad9757b193ce64e8d988c11b69e55b,
       type: 2}
-  - bulletSpawn: {instanceID: 0}
+  - W1Secondary: {instanceID: 0}
+  - W2Primary: {instanceID: 0}
+  - W2Secondary: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
