@@ -13971,7 +13971,6 @@ If the Unity Editor setting "Auto-Update" is set to enabled, editing a script ou
     <member name="M:UnityEditor.Experimental.AssetImporters.ScriptedImporterEditor.OnInspectorGUI">
       <summary>
         <para>Implement this method to customize how Unity's Asset inspector is drawn for an Asset managed by a ScriptedImporter.</para>
-<<<<<<< HEAD
       </summary>
     </member>
     <member name="T:UnityEditor.Experimental.CustomLightEditorAttribute">
@@ -13982,8 +13981,6 @@ If the Unity Editor setting "Auto-Update" is set to enabled, editing a script ou
     <member name="P:UnityEditor.Experimental.CustomLightEditorAttribute.renderPipelineType">
       <summary>
         <para>The RenderPipelineAsset type this light editor is for.</para>
-=======
->>>>>>> Zeke
       </summary>
     </member>
     <member name="?:UnityEditor.Experimental.ICustomLightEditor">
@@ -15988,14 +15985,11 @@ Note: Use HandleUtility.GetHandleSize where you might want to have constant scre
         <para>This icon is used for Spotlight searches. (iOS only).</para>
       </summary>
     </member>
-<<<<<<< HEAD
     <member name="F:UnityEditor.IconKind.Store">
       <summary>
         <para>This icon is used by the iOS App Store.</para>
       </summary>
     </member>
-=======
->>>>>>> Zeke
     <member name="T:UnityEditor.IHVImageFormatImporter">
       <summary>
         <para>Use IHVImageFormatImporter to modify Texture2D import settings for Textures in IHV (Independent Hardware Vendor) formats such as .DDS and .PVR from Editor scripts.</para>

@@ -538,6 +538,30 @@ Prefab:
       propertyPath: targetPlane
       value: 
       objectReference: {fileID: 1550614313}
+    - target: {fileID: 114622626351753336, guid: f63f2b1b90ffe5e4ea3460706cde8a31,
+        type: 2}
+      propertyPath: W1Primary
+      value: 
+      objectReference: {fileID: 1133682699122518, guid: d8ad9757b193ce64e8d988c11b69e55b,
+        type: 2}
+    - target: {fileID: 114622626351753336, guid: f63f2b1b90ffe5e4ea3460706cde8a31,
+        type: 2}
+      propertyPath: W1Secondary
+      value: 
+      objectReference: {fileID: 1254257751582510, guid: 6c4779363db8678439fd527b1fcff507,
+        type: 2}
+    - target: {fileID: 114622626351753336, guid: f63f2b1b90ffe5e4ea3460706cde8a31,
+        type: 2}
+      propertyPath: W2Secondary
+      value: 
+      objectReference: {fileID: 1254257751582510, guid: 6c4779363db8678439fd527b1fcff507,
+        type: 2}
+    - target: {fileID: 114622626351753336, guid: f63f2b1b90ffe5e4ea3460706cde8a31,
+        type: 2}
+      propertyPath: W2Primary
+      value: 
+      objectReference: {fileID: 1681479720519980, guid: b4989dc825c37934fafc7614530446ee,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f63f2b1b90ffe5e4ea3460706cde8a31, type: 2}
   m_IsPrefabParent: 0
@@ -713,7 +737,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1392836579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 290, y: 163, z: 0}
+  m_LocalPosition: {x: 345, y: 163, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421953119}

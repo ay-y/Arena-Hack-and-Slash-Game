@@ -152,6 +152,13 @@ public class PlayerController : MonoBehaviour {
         }
         anim.SetFloat("direction", -lookCompare);
 
+        float lookX = rigidBody.velocity.magnitude * Mathf.Cos(-lookCompare);
+        float lookY = rigidBody.velocity.magnitude * Mathf.Sin(-lookCompare);
+
+        anim.SetFloat("x", lookX);
+        anim.SetFloat("y", lookY);
+
+
         //Debug.Log(directionOfVelocity);
         //Debug.Log(directionOfLook);
         //Debug.Log(lookCompare);

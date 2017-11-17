@@ -907,8 +907,12 @@ MonoBehaviour:
   inputVertLeft: VerticalL_P1
   inputHorizRight: HorizontalR_P1
   inputVertRight: VerticalR_P1
-  Projectile: {fileID: 1133682699122518, guid: d8ad9757b193ce64e8d988c11b69e55b, type: 2}
+  W1Primary: {fileID: 0}
   primaryCooldown: 0
+  W1Secondary: {fileID: 0}
+  secondaryCooldown: 0
+  W2Primary: {fileID: 0}
+  W2Secondary: {fileID: 0}
 --- !u!136 &136752481340357474
 CapsuleCollider:
   m_ObjectHideFlags: 1
