@@ -13,7 +13,8 @@ public class FollowPlayer : MonoBehaviour {
 	void Start () {
         //transform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         playerRigidBody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
-	}
+        //target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

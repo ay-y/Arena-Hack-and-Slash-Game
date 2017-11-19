@@ -14,7 +14,7 @@ public class CameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 target = GameObject.Find("Player").transform.position;
+        Vector3 target = GameObject.FindWithTag("Player").transform.position;
         target = new Vector3(target.x, 25.0f, target.z - 10);
         transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, lookTime);
 	}

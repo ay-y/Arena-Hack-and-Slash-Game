@@ -121,19 +121,6 @@ public class PlayerController : MonoBehaviour {
             transform.Rotate(new Vector3(0.0f, 90, 0.0f));
         }
 
-
-		//Check to see if primary attack should happen
-		if ((Input.GetKey("enter") || Input.GetAxis("Primary_P1")  > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
-        {
-			PrimaryAttack();
-		}
-
-        //Cooldown for primary attack
-        if(primaryCooldown.CompareTo(0) > 0)
-        {
-            primaryCooldown -= Time.deltaTime;
-        }
-
         // comparing look and velocity direction
         float directionOfVelocity = Mathf.Atan2(rigidBody.velocity.x, rigidBody.velocity.z) * Mathf.Rad2Deg;
         float directionOfLook = transform.eulerAngles.y;
@@ -162,8 +149,21 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log(directionOfVelocity);
         //Debug.Log(directionOfLook);
         //Debug.Log(lookCompare);
+
+        //Check to see if primary attack should happen
+        if ((Input.GetAxis("Primary_KB") > 0.9f || Input.GetAxis("Primary_P1") > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+        {
+            PrimaryAttack();
+        }
+
+        //Cooldown for primary attack
+        if (primaryCooldown.CompareTo(0) > 0)
+        {
+            primaryCooldown -= Time.deltaTime;
+        }
+
         //Check to see if Secondary attack should happen
-        if ((Input.GetKey("right shift") || Input.GetAxis("Secondary_P1") > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+        if ((Input.GetAxis("Secondary_KB") > 0.9f || Input.GetAxis("Secondary_P1") > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
         {
             SecondaryAttack();
         }
@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Check to see if equipment should be switched
-        if ((Input.GetKey("r") || Input.GetButton("Change_P1")) && !alreadySwitched)
+        if ((Input.GetAxis("Change_KB") > 0.9f || Input.GetButton("Change_P1")) && !alreadySwitched)
         {
             equipped = !equipped;
             alreadySwitched = true;

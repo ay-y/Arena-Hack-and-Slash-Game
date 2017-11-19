@@ -118,11 +118,27 @@ InputManager:
     axis: 9
     joyNum: 0
   - serializedVersion: 3
+    m_Name: Primary_KB
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: mouse 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 9
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: Secondary_P1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: mouse 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -131,14 +147,30 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 10
+    axis: 8
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Secondary_KB
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: mouse 1
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 8
     joyNum: 0
   - serializedVersion: 3
     m_Name: Change_P1
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: r
+    negativeButton: q
+    positiveButton: e
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -147,5 +179,21 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 11
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Change_KB
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: q
+    positiveButton: e
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 2
     joyNum: 0

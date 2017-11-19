@@ -98,9 +98,11 @@ GameObject:
   - component: {fileID: 54201291419208392}
   - component: {fileID: 136752481340357474}
   - component: {fileID: 114622626351753336}
+  - component: {fileID: 114677488477827452}
+  - component: {fileID: 114598113919637754}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4570865542087664}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +749,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171389576490744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.98, z: 0}
+  m_LocalPosition: {x: 3.8467267, y: -1.14, z: 2.7418838}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4697086627864080}
@@ -867,7 +869,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 5
-  m_AngularDrag: 0.05
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -890,6 +892,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114598113919637754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171389576490744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7977eef6506806a43a13678101a4e4fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114622626351753336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -907,12 +920,31 @@ MonoBehaviour:
   inputVertLeft: VerticalL_P1
   inputHorizRight: HorizontalR_P1
   inputVertRight: VerticalR_P1
-  W1Primary: {fileID: 0}
+  W1Primary: {fileID: 1133682699122518, guid: d8ad9757b193ce64e8d988c11b69e55b, type: 2}
   primaryCooldown: 0
-  W1Secondary: {fileID: 0}
+  W1Secondary: {fileID: 1254257751582510, guid: 6c4779363db8678439fd527b1fcff507,
+    type: 2}
   secondaryCooldown: 0
-  W2Primary: {fileID: 0}
-  W2Secondary: {fileID: 0}
+  W2Primary: {fileID: 1681479720519980, guid: b4989dc825c37934fafc7614530446ee, type: 2}
+  W2Secondary: {fileID: 1254257751582510, guid: 6c4779363db8678439fd527b1fcff507,
+    type: 2}
+--- !u!114 &114677488477827452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171389576490744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2895f3b67b4f8b4f8963e53a9189fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 100
+  healtherSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  flashcolour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!136 &136752481340357474
 CapsuleCollider:
   m_ObjectHideFlags: 1
