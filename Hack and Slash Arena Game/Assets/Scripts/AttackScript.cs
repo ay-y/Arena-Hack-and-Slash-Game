@@ -1,21 +1,23 @@
 ﻿using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour {
 
-    private float coolDown;
-    private float speed;
-    private float destroyTime;
-    private float damage;
+    public  float coolDown = 1.0f;
+    public float speed = 60f;
+    public  float destroyTime = 2.0f;
+    public float damage = 25f;
 
 	// Use this for initialization
 	void Start () {
         coolDown = 1.0f;
-        speed = 60f;
+        speed = 60.0f;
         destroyTime = 2.0f;
-        damage = 25f;
+        damage = 25.0f;
 	}
+    
 
     public float getCooldown()
     {
