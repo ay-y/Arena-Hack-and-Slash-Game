@@ -749,7 +749,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171389576490744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8467267, y: -1.14, z: 2.7418838}
+  m_LocalPosition: {x: 0, y: -0.98, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4697086627864080}
@@ -914,12 +914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe132cf74730d646830b4bf5c2ca70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlNumber: 1
+  controlNumber: 49
+  controlNumberK: 48
   targetPlane: {fileID: 0}
-  inputHorizLeft: HorizontalL_P1
-  inputVertLeft: VerticalL_P1
-  inputHorizRight: HorizontalR_P1
-  inputVertRight: VerticalR_P1
   W1Primary: {fileID: 1133682699122518, guid: d8ad9757b193ce64e8d988c11b69e55b, type: 2}
   primaryCooldown: 0
   W1Secondary: {fileID: 1254257751582510, guid: 6c4779363db8678439fd527b1fcff507,
@@ -934,7 +931,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171389576490744}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2895f3b67b4f8b4f8963e53a9189fca, type: 3}
   m_Name: 

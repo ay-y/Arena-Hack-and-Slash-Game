@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
     bool keyboard_activated = false;
-    public int controlNumber = 1;
+    public char controlNumber = '1';
+    public char controlNumberK = '0';
     public Collider targetPlane;
     private float lookSpeed = 0.5f;
 
@@ -22,13 +24,17 @@ public class PlayerController : MonoBehaviour {
     private float rsticky = 0;
 
     // Left stick inputs
-    public string inputHorizLeft = "HorizontalL_P1";
-    public string inputVertLeft = "VerticalL_P1";
+    private string inputHorizLeft = "HorizontalL_P1";
+    private string inputVertLeft = "VerticalL_P1";
 
     // right stick inputs
-    public string inputHorizRight = "HorizontalR_P1";
-    public string inputVertRight = "VerticalR_P1";
+    private string inputHorizRight = "HorizontalR_P1";
+    private string inputVertRight = "VerticalR_P1";
 
+    // attack inputs
+    private string atkPrimary = "Primary_P1";
+    private string atkSecondary = "Secondary_P1";
+    private string changeAtk = "Change_P1";
 
 	public GameObject W1Primary;
     public float primaryCooldown = 0;
@@ -50,11 +56,41 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         rigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
+        inputHorizLeft = ChangeNum(inputHorizLeft, controlNumber);
+        inputVertLeft = ChangeNum(inputVertLeft, controlNumber);
+        inputHorizRight = ChangeNum(inputHorizRight, controlNumber);
+        inputVertRight = ChangeNum(inputVertRight, controlNumber);
+        atkPrimary = ChangeNum(atkPrimary, controlNumber);
+        atkSecondary = ChangeNum(atkSecondary, controlNumber);
+        changeAtk = ChangeNum(changeAtk, controlNumber);
     }
 
     // Update is called once per frame
     void Update() {
+        // change this when keyboard switch changes to menu
+        if (Input.GetKey("k"))
+        {
+            if (!keyboard_activated) {
+                inputHorizLeft = ChangeNum(inputHorizLeft, controlNumber);
+                inputVertLeft = ChangeNum(inputVertLeft, controlNumber);
+                inputHorizRight = ChangeNum(inputHorizRight, controlNumber);
+                inputVertRight = ChangeNum(inputVertRight, controlNumber);
+                atkPrimary = ChangeNum(atkPrimary, controlNumber);
+                atkSecondary = ChangeNum(atkSecondary, controlNumber);
+                changeAtk = ChangeNum(changeAtk, controlNumber);
+            }
+            else
+            {
+                inputHorizLeft = ChangeNum(inputHorizLeft, controlNumberK);
+                inputVertLeft = ChangeNum(inputVertLeft, controlNumberK);
+                inputHorizRight = ChangeNum(inputHorizRight, controlNumberK);
+                inputVertRight = ChangeNum(inputVertRight, controlNumberK);
+                atkPrimary = ChangeNum(atkPrimary, controlNumberK);
+                atkSecondary = ChangeNum(atkSecondary, controlNumberK);
+                changeAtk = ChangeNum(changeAtk, controlNumberK);
+            }
+        }
+
         anim.SetFloat("velocity", rigidBody.velocity.magnitude);
         //Debug.Log(rigidBody.velocity.magnitude);
 
@@ -64,8 +100,11 @@ public class PlayerController : MonoBehaviour {
         Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         // floats for stick input
-        lstickx = Input.GetAxis(inputHorizLeft) + 0.0001f;
-        lsticky = Input.GetAxis(inputVertLeft) + 0.0001f;
+        if (!(keyboard_activated && controlNumberK == '0'))
+        {
+            lstickx = Input.GetAxis(inputHorizLeft) + 0.0001f;
+            lsticky = Input.GetAxis(inputVertLeft) + 0.0001f;
+        }
 
         // create a direction vector based on input floats
         var ldirection = new Vector3(-lsticky, 0, lstickx);
@@ -77,8 +116,11 @@ public class PlayerController : MonoBehaviour {
 
 
         // same as above but for the right stick
-        rstickx = Input.GetAxis(inputHorizRight) + 0.0001f;
-        rsticky = Input.GetAxis(inputVertRight) + 0.0001f;
+        if (!(keyboard_activated && controlNumberK == '0'))
+        {
+            rstickx = Input.GetAxis(inputHorizRight) + 0.0001f;
+            rsticky = Input.GetAxis(inputVertRight) + 0.0001f;
+        }
 
         var rdirection = new Vector3(rsticky, 0, rstickx);
         var rrotation = Quaternion.LookRotation(rdirection, Vector3.up);        
@@ -86,7 +128,7 @@ public class PlayerController : MonoBehaviour {
 
 
         // check deadzone and set player rotation to preferred stick
-        if (keyboard_activated)
+        if (keyboard_activated && controlNumberK == '0')
         {
             Ray camRay = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
@@ -151,7 +193,7 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log(lookCompare);
 
         //Check to see if primary attack should happen
-        if ((Input.GetAxis("Primary_KB") > 0.9f || Input.GetAxis("Primary_P1") > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+        if ((Input.GetAxis(atkPrimary) > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
         {
             PrimaryAttack();
         }
@@ -163,7 +205,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Check to see if Secondary attack should happen
-        if ((Input.GetAxis("Secondary_KB") > 0.9f || Input.GetAxis("Secondary_P1") > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+        if ((Input.GetAxis(atkSecondary) > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
         {
             SecondaryAttack();
         }
@@ -175,7 +217,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Check to see if equipment should be switched
-        if ((Input.GetAxis("Change_KB") > 0.9f || Input.GetButton("Change_P1")) && !alreadySwitched)
+        if (Input.GetButton(changeAtk) && !alreadySwitched)
         {
             equipped = !equipped;
             alreadySwitched = true;
@@ -203,9 +245,9 @@ public class PlayerController : MonoBehaviour {
     private void FixedUpdate()
     {
         // add force in direction of left stick
-        if (keyboard_activated)
+        if (keyboard_activated && controlNumberK == '0')
         {
-            rigidBody.AddForce(new Vector3(Input.GetAxis("Horizontal_KB") * Time.deltaTime * accel, 0, Input.GetAxis("Vertical_KB") * Time.deltaTime * accel));
+            rigidBody.AddForce(new Vector3(Input.GetAxis("Horizontal_P0") * Time.deltaTime * accel, 0, Input.GetAxis("Vertical_P0") * Time.deltaTime * accel));
         }
         else
         {
@@ -214,6 +256,15 @@ public class PlayerController : MonoBehaviour {
 
         // clamp max velocity
         rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity);
+    }
+
+    private string ChangeNum(string str, char num)
+    {
+        int l = str.Length - 1;
+        StringBuilder sb = new StringBuilder(str);
+        sb[l] = num;
+        str = sb.ToString();
+        return str;
     }
 
 	private void PrimaryAttack()
