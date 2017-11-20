@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class FollowPlayer2 : MonoBehaviour {
 
+    private GameObject[] players;
     private Transform target;
     Rigidbody rigidBody;
     private float maxVelocity = 5;
@@ -14,6 +15,7 @@ public class FollowPlayer2 : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        players = GameObject.FindGameObjectsWithTag("Player");
         target = GameObject.FindWithTag("Player").transform;
         rigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -21,13 +23,23 @@ public class FollowPlayer2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        float dist = 100000;
+        for (int x = 0; x < players.Length; x++) {
+            float checkDist = Vector3.Distance(transform.position, players[x].transform.position);
+            if (checkDist < dist)
+            {
+                dist = checkDist;
+                target = players[x].transform;
+            }
+
+        }
 
         Vector3 difference = target.position - transform.position;
         difference.y = 0f;
         Quaternion newRotation = Quaternion.LookRotation(difference);
         transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, lookSpeed);
 
-     
+        
 	}
     private void FixedUpdate()
     {
