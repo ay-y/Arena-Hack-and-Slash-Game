@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour {
         currentHealth -= damage;
         if (currentHealth <= 0 && !isDead)
         {
-            Death();
+            this.Death();
         }
     }
 
@@ -26,13 +26,14 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            TakeDamage(35);
+            int damage = collision.gameObject.GetComponent<AttackScript>().getDamage();
+            this.TakeDamage(damage);
         }
     }
 
     private void Death()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
 
     }
 

@@ -45,8 +45,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject W2Primary;
     public GameObject W2Secondary;
 
-    private AttackScript Primary;
-    private AttackScript Secondary;
+    AttackScript Primary;
+     AttackScript Secondary;
 
     private bool equipped = true;
     private bool alreadySwitched = false;
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour {
         atkPrimary = ChangeNum(atkPrimary, controlNumber);
         atkSecondary = ChangeNum(atkSecondary, controlNumber);
         changeAtk = ChangeNum(changeAtk, controlNumber);
+        // W1Primary = GameObject.Find("Sphere");
         Primary = W1Primary.GetComponent<AttackScript>();
 
     }
@@ -283,13 +284,13 @@ public class PlayerController : MonoBehaviour {
             transform.rotation);
 
             // Add velocity to the bullet
-             attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * 60f;
+             attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * W1Primary.GetComponent<AttackScript>().getSpeed();
 
             // Destroy the bullet after specified amount of time
-           Destroy(attack, 2.0f);
+           Destroy(attack, W1Primary.GetComponent<AttackScript>().getDestroyTime());
 
             //Primary cooldown 
-            primaryCooldown = 1.0f;
+            primaryCooldown = W1Primary.GetComponent<AttackScript>().getCooldown();
         //} else
         //{
           //  var attack = (GameObject)Instantiate(

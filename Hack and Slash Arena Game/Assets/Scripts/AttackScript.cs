@@ -8,14 +8,10 @@ public class AttackScript : MonoBehaviour {
     public  float coolDown = 1.0f;
     public float speed = 60f;
     public  float destroyTime = 2.0f;
-    public float damage = 25f;
+    public int damage = 25;
 
 	// Use this for initialization
 	void Start () {
-        coolDown = 1.0f;
-        speed = 60.0f;
-        destroyTime = 2.0f;
-        damage = 25.0f;
 	}
     
 
@@ -34,7 +30,7 @@ public class AttackScript : MonoBehaviour {
         return destroyTime;
     }
 
-    public float getDamage()
+    public int getDamage()
     {
         return damage;
     }
