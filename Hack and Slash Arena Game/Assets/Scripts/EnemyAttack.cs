@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
-    public float timeBetweenAttacks = 0.5f;
+    public float timeBetweenAttacks = 2.0f;
     public int attackDamage = 25;
 
     GameObject player;
@@ -17,12 +17,13 @@ public class EnemyAttack : MonoBehaviour {
         playerHealth = player.GetComponent<PlayerHealth>();
 		
 	}
-    void OnTriggerEnter(Collider other)
+   
+    void OnTriggerStay(Collider other)
     {
         // If the entering collider is the player...
-        if (other.gameObject.tag == "Player") ;
+        if (other.gameObject.tag == "Player" && timer > timeBetweenAttacks) 
         {
-            Attack();
+            Attack(other);
         }
     }
     
@@ -30,14 +31,12 @@ public class EnemyAttack : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         timer += Time.deltaTime;
-        //if (timer >= timeBetweenAttacks && playerInRange)
-        //{
-        //    Attack();
-       // }
 	}
 
-    void Attack()
+    void Attack(Collider other)
     {
+        GameObject player = other.gameObject;
+        playerHealth = player.GetComponent<PlayerHealth>();
         if (playerHealth.currentHealth > 0 && timer > timeBetweenAttacks)
         {
             playerHealth.TakeDamage(attackDamage);

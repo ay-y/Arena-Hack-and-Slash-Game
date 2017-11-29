@@ -98,8 +98,6 @@ GameObject:
   - component: {fileID: 54201291419208392}
   - component: {fileID: 136752481340357474}
   - component: {fileID: 114622626351753336}
-  - component: {fileID: 114677488477827452}
-  - component: {fileID: 114598113919637754}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -892,17 +890,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114598113919637754
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171389576490744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7977eef6506806a43a13678101a4e4fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114622626351753336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -925,23 +912,6 @@ MonoBehaviour:
   W2Primary: {fileID: 1681479720519980, guid: b4989dc825c37934fafc7614530446ee, type: 2}
   W2Secondary: {fileID: 1254257751582510, guid: 6c4779363db8678439fd527b1fcff507,
     type: 2}
---- !u!114 &114677488477827452
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171389576490744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2895f3b67b4f8b4f8963e53a9189fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 100
-  healtherSlider: {fileID: 0}
-  damageImage: {fileID: 0}
-  flashSpeed: 5
-  flashcolour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!136 &136752481340357474
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -964,7 +934,6 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -980,7 +949,6 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1032,7 +1000,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1048,7 +1015,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

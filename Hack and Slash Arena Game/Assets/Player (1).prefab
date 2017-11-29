@@ -415,8 +415,6 @@ GameObject:
   - component: {fileID: 54381267657939084}
   - component: {fileID: 136022572958622300}
   - component: {fileID: 114809441719080232}
-  - component: {fileID: 114532539227373108}
-  - component: {fileID: 114746549132269864}
   m_Layer: 0
   m_Name: Player (1)
   m_TagString: Player
@@ -892,38 +890,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114532539227373108
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1828569292361406}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2895f3b67b4f8b4f8963e53a9189fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 100
-  healtherSlider: {fileID: 0}
-  damageImage: {fileID: 0}
-  flashSpeed: 5
-  flashcolour: {r: 1, g: 0, b: 0, a: 0.1}
---- !u!114 &114746549132269864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1828569292361406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7977eef6506806a43a13678101a4e4fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coolDown: 0
-  speed: 60
-  destroyTime: 0
-  damage: 0
 --- !u!114 &114809441719080232
 MonoBehaviour:
   m_ObjectHideFlags: 1
