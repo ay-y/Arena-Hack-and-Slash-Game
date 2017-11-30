@@ -16,6 +16,7 @@ public class CameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        players = GameObject.FindGameObjectsWithTag("Player");
         Vector3 target = new Vector3(0, 0, 0);
 
         for (int x = 0; x < players.Length; x++)

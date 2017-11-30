@@ -309,7 +309,7 @@ public class PlayerController : MonoBehaviour {
     //    }
 
 		// Add velocity to the bullet
-<<<<<<< HEAD
+
 		//attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * Primary.getSpeed();
 
 		// Destroy the bullet after specified amount of time
@@ -317,7 +317,7 @@ public class PlayerController : MonoBehaviour {
 
         //Primary cooldown 
         //primaryCooldown = Primary.getCooldown();
-=======
+
 		attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * 60.0f;
 
 		// Destroy the bullet after specified amount of time
@@ -325,7 +325,7 @@ public class PlayerController : MonoBehaviour {
 
         //Primary cooldown 
         primaryCooldown = 1.0f;
->>>>>>> Mark
+
 	}
 
     private void SecondaryAttack()

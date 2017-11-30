@@ -6,24 +6,19 @@ using UnityEngine;
 
 public class FollowPlayer2 : MonoBehaviour {
 
-<<<<<<< HEAD
+
     public Transform target;
-=======
+
     private GameObject[] players;
     private GameObject[] viruses;
-    private Transform target;
->>>>>>> Mark
+
     Rigidbody rigidBody;
     private float maxVelocity = 3;
     private float lookSpeed = 0.15f;
     private Animator anim;
-<<<<<<< HEAD
+
     private float timer;
-    private GameObject[] players;
-=======
 
-
->>>>>>> Mark
     // Use this for initialization
     void Start () {
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -34,13 +29,13 @@ public class FollowPlayer2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-<<<<<<< HEAD
+
         if (target == null || timer > 1.0f)
         { 
             newTarget();
         }
-=======
-        float dist = 100000;
+
+        /*float dist = 100000;
         for (int x = 0; x < players.Length; x++) {
             float checkDist = Vector3.Distance(transform.position, players[x].transform.position);
             if (checkDist < dist)
@@ -49,20 +44,19 @@ public class FollowPlayer2 : MonoBehaviour {
                 target = players[x].transform;
             }
 
-        }
+        }*/
 
->>>>>>> Mark
+
         Vector3 difference = target.position - transform.position;
         difference.y = 0f;
         Quaternion newRotation = Quaternion.LookRotation(difference);
         transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, lookSpeed);
-<<<<<<< HEAD
         timer += Time.deltaTime;
    
-=======
+
 
         
->>>>>>> Mark
+
 	}
 
     private void newTarget()
@@ -102,7 +96,7 @@ public class FollowPlayer2 : MonoBehaviour {
             }
         }
         
-        rigidBody.AddRelativeForce(Vector3.forward * 2000 * Time.deltaTime);
+        rigidBody.AddRelativeForce(Vector3.forward * 3000 * Time.deltaTime);
         // clamp max velocity
         rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity + viruscount * 1.5f);
         anim.SetFloat("speed", rigidBody.velocity.magnitude);
