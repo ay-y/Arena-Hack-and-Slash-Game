@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/zeke.unity
+=======
+- path: Assets/Scenes/markScene2.unity
+>>>>>>> Mark
   isLoaded: 1
   isActive: 1
