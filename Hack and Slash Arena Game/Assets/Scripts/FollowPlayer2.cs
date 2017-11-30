@@ -34,18 +34,35 @@ public class FollowPlayer2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+<<<<<<< HEAD
         if (target == null || timer > 1.0f)
         { 
             newTarget();
         }
+=======
+        float dist = 100000;
+        for (int x = 0; x < players.Length; x++) {
+            float checkDist = Vector3.Distance(transform.position, players[x].transform.position);
+            if (checkDist < dist)
+            {
+                dist = checkDist;
+                target = players[x].transform;
+            }
+
+        }
+
+>>>>>>> Mark
         Vector3 difference = target.position - transform.position;
         difference.y = 0f;
         Quaternion newRotation = Quaternion.LookRotation(difference);
         transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, lookSpeed);
+<<<<<<< HEAD
         timer += Time.deltaTime;
    
+=======
 
         
+>>>>>>> Mark
 	}
 
     private void newTarget()

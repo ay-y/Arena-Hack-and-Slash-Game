@@ -526,6 +526,7 @@ Prefab:
       propertyPath: targetPlane
       value: 
       objectReference: {fileID: 1550614313}
+<<<<<<< HEAD
     - target: {fileID: 114598113919637754, guid: f63f2b1b90ffe5e4ea3460706cde8a31,
         type: 2}
       propertyPath: speed
@@ -539,12 +540,14 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 114598113919637754, guid: f63f2b1b90ffe5e4ea3460706cde8a31, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f63f2b1b90ffe5e4ea3460706cde8a31, type: 2}
+=======
     - target: {fileID: 1364742187634450, guid: 99ed5c65029a2474ca175a8715466749, type: 2}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99ed5c65029a2474ca175a8715466749, type: 2}
+>>>>>>> Mark
   m_IsPrefabParent: 0
 --- !u!1001 &1035544471
 Prefab:
@@ -833,10 +836,13 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1392836579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+=======
   m_LocalPosition: {x: 371.5, y: 159.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> Mark
   m_Children:
   - {fileID: 421953119}
   - {fileID: 1598903383}
