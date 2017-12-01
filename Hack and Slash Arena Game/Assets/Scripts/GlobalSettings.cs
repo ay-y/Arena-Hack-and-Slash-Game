@@ -35,11 +35,11 @@ public class GlobalSettings : MonoBehaviour {
         if (Input.GetKeyDown("k"))
         { keyboard_activated = !keyboard_activated; }
 
-        if (Input.GetKeyDown("m") && enemies.Length < 41)
+        if (Input.GetKeyDown("m") && enemies.Length < 101)
         {
             int randomSpawn = Random.Range(0, spawnPoints.Length);
             Debug.Log(randomSpawn);
-            spawnPoints[randomSpawn].GetComponent<SpawnScript>().SpawnEnemies(1, virusEnemy);
+            spawnPoints[randomSpawn].GetComponent<SpawnScript>().SpawnEnemies(4, virusEnemy);
         }
 
         // wave timer

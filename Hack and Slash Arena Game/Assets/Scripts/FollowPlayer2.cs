@@ -98,11 +98,7 @@ public class FollowPlayer2 : MonoBehaviour {
         
         rigidBody.AddRelativeForce(Vector3.forward * 3000 * Time.deltaTime);
         // clamp max velocity
-        rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity + viruscount * 1.5f);
+        rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity + viruscount * 1.0f);
         anim.SetFloat("speed", rigidBody.velocity.magnitude);
     }
-
-
 }
-
-
