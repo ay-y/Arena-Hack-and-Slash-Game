@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: PlayerUpperBody
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/legControl_L
+    m_Weight: 0
+  - m_Path: Armature/legControl_L/footHeel_L
+    m_Weight: 0
+  - m_Path: Armature/legControl_L/footHeel_L/footBase_L
+    m_Weight: 0
+  - m_Path: Armature/legControl_R
+    m_Weight: 0
+  - m_Path: Armature/legControl_R/footHeel_R
+    m_Weight: 0
+  - m_Path: Armature/legControl_R/footHeel_R/footBase_R
+    m_Weight: 0
+  - m_Path: Armature/lowerBody
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/neck
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/neck/Head
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/upperArm_L
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/upperArm_L/lowerArm_L
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/upperArm_L/lowerArm_L/hand_L
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/upperArm_L/lowerArm_L/hand_L/finger_L
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/upperArm_R
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/upperArm_R/lowerArm_R
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/upperArm_R/lowerArm_R/hand_R
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperBody/upperArm_R/lowerArm_R/hand_R/finger_R
+    m_Weight: 1
+  - m_Path: Armature/lowerBody/upperLeg_L
+    m_Weight: 0
+  - m_Path: Armature/lowerBody/upperLeg_L/lowerLeg_L
+    m_Weight: 0
+  - m_Path: Armature/lowerBody/upperLeg_R
+    m_Weight: 0
+  - m_Path: Armature/lowerBody/upperLeg_R/lowerLeg_R
+    m_Weight: 0
+  - m_Path: Armature/poleTarget_leg_L
+    m_Weight: 0
+  - m_Path: Armature/poleTarget_leg_R
+    m_Weight: 0
+  - m_Path: Character_Mesh
+    m_Weight: 1

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public char controlNumberK = '0';
     public Collider targetPlane;
     private float lookSpeed = 0.5f;
+    
 
     private Rigidbody rigidBody;
     private float accel = 2000;
@@ -46,10 +47,13 @@ public class PlayerController : MonoBehaviour {
     public GameObject W2Secondary;
 
     AttackScript Primary;
-     AttackScript Secondary;
+    AttackScript Secondary;
 
     private bool equipped = true;
     private bool alreadySwitched = false;
+
+    public string weaponName = "stick";
+    private GameObject weapon;
 
 
     // Use this for initialization
@@ -65,7 +69,7 @@ public class PlayerController : MonoBehaviour {
         changeAtk = ChangeNum(changeAtk, controlNumber);
         // W1Primary = GameObject.Find("Sphere");
         Primary = W1Primary.GetComponent<AttackScript>();
-
+        weapon = transform.Find("Weapon").gameObject;
     }
 
     // Update is called once per frame
@@ -357,6 +361,17 @@ public class PlayerController : MonoBehaviour {
 
         //secondary cooldown 
         secondaryCooldown = 1.0f;
+    }
+
+    public void ChangeWeapon(string wep)
+    {
+        weaponName = wep;
+        SwapWepModel(wep);
+    }
+
+    private void SwapWepModel(string wep)
+    {
+        
     }
 
 }
