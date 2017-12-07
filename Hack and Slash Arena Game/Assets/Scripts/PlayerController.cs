@@ -324,7 +324,7 @@ public class PlayerController : MonoBehaviour {
 		Destroy(attack, 2.0f);
 
         //Primary cooldown 
-        primaryCooldown = 1.0f;
+        primaryCooldown = 0.2f;
 
 	}
 
