@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour {
 
-    private float lookTime = 0.4f;
+    private float lookTime = 1.5f;
     private Vector3 velocity = Vector3.zero;
     private GameObject[] players;
     private int playerCount;
@@ -23,6 +23,9 @@ public class CameraScript : MonoBehaviour {
             if (players[x] != null)
             {
                 target = target + players[x].transform.position;
+            } else
+            {
+                players = GameObject.FindGameObjectsWithTag("Player");
             }
         }
         target = target / players.Length;
