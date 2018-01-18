@@ -75,12 +75,16 @@ public class WaveScript : MonoBehaviour {
 
     private Squad[] InitializeSquads() {
 
-        // Intensity : Indexes
-        // 1: 0 - 4
-        // 2: 5 - 10
-        // 3: 11 - 16
-        // 4: 17 - 20
-        // 5: 21 - 30
+        /*
+        Intensity = difficulty of the squads
+
+        Intensity : Indexes
+        1: 0 - 4
+        2: 5 - 10
+        3: 11 - 16
+        4: 17 - 20
+        5: 21 - 30
+        */
 
         Squad[] squadList = new Squad[30];
         squadList[0].SetVirusCount(1);
