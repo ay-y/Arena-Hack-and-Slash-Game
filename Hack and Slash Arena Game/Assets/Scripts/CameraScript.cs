@@ -30,7 +30,7 @@ public class CameraScript : MonoBehaviour {
             }
         }
         target = target / players.Length;
-        target = new Vector3(target.x, 25.0f, target.z - 10);
+        target = new Vector3(target.x, 35.0f, target.z - 10);
         transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, lookTime);
 	}
 }

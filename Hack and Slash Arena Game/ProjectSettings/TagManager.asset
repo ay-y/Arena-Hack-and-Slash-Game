@@ -4,14 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - PlayerProjectile
-<<<<<<< HEAD
-  - Virus
-  - Spawn
-=======
+  - Fire
   - Tree
->>>>>>> Zeke2
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX
@@ -21,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - TargetPlane
+  - 
   - 
   - 
   - 
