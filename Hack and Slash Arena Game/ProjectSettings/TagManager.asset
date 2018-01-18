@@ -6,8 +6,12 @@ TagManager:
   tags:
   - Enemy
   - PlayerProjectile
+<<<<<<< HEAD
   - Virus
   - Spawn
+=======
+  - Tree
+>>>>>>> Zeke2
   layers:
   - Default
   - TransparentFX
