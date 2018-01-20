@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 
@@ -11,13 +12,15 @@ public class FollowPlayer2 : MonoBehaviour {
 
     private GameObject[] players;
     private GameObject[] viruses;
+    NavMeshAgent agent;
 
     Rigidbody rigidBody;
     private float maxVelocity = 3;
     private float lookSpeed = 0.15f;
     private Animator anim;
 
-    private float timer;
+    private float timer = 0.0f;
+    
 
     // Use this for initialization
     void Start () {
@@ -25,80 +28,45 @@ public class FollowPlayer2 : MonoBehaviour {
         target = GameObject.FindWithTag("Player").transform;
         rigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = 3.5f;
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (target == null || timer > 1.0f)
-        { 
-            newTarget();
-        }
-
-        /*float dist = 100000;
+        viruses = GameObject.FindGameObjectsWithTag("Virus");
+        players = GameObject.FindGameObjectsWithTag("Player");
+        float dist = 100000;
         for (int x = 0; x < players.Length; x++) {
             float checkDist = Vector3.Distance(transform.position, players[x].transform.position);
             if (checkDist < dist)
             {
                 dist = checkDist;
                 target = players[x].transform;
-            }
-
-        }*/
-
-
-        Vector3 difference = target.position - transform.position;
-        difference.y = 0f;
-        Quaternion newRotation = Quaternion.LookRotation(difference);
-        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, lookSpeed);
-        timer += Time.deltaTime;
-   
-
-
-        
-
-	}
-
-    private void newTarget()
-    {
-        float distance = Mathf.Infinity;
-        players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players)
-        {
-            Vector3 diff = player.transform.position - transform.position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                distance = curDistance;
-                target = player.transform;
+                agent.SetDestination(target.position);
             }
         }
-    }
 
+        int virusCount = 0;
+
+        foreach (GameObject virus in viruses)
+        {
+            if (Vector3.Distance(virus.transform.position, transform.position) < 6.0f){
+                virusCount++;
+            }
+        }
+        agent.speed = 4.5f + (virusCount * 0.75f);
+
+        if (agent.speed > 6.0f)
+        {
+            agent.speed = 6.0f;
+        }
+        anim.SetFloat("speed", agent.velocity.magnitude);
+
+    }
+    
     private void FixedUpdate()
     {
-        int viruscount = 0;
-        viruses = GameObject.FindGameObjectsWithTag("Virus");
-        for (int x = 0; x < viruses.Length; x++)
-        {
-            float vdist = Vector3.Distance(transform.position, viruses[x].transform.position);
-            if (vdist < 7.0f)
-            {
-                viruscount++;
-            }
-            if (vdist < 10.0f && vdist > 5.0f)
-            {
-                rigidBody.AddForce((viruses[x].transform.position - transform.position).normalized * 500.0f * Time.smoothDeltaTime);
-            }
-            else if (vdist < 5.0f)
-            {
-                rigidBody.AddForce((viruses[x].transform.position - transform.position).normalized * -200.0f * Time.smoothDeltaTime);
-            }
-        }
-        
-        rigidBody.AddRelativeForce(Vector3.forward * 3000 * Time.deltaTime);
-        // clamp max velocity
-        rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity + viruscount * 1.0f);
-        anim.SetFloat("speed", rigidBody.velocity.magnitude);
+
     }
 }
