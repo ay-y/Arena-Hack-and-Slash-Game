@@ -18,9 +18,10 @@ public class WaveScript : MonoBehaviour {
 
     public class Squad {
         private int viruscount;
-        private int othercount;
-        private int othercount2;
-    
+        private int rangercount;
+        private int bruisercount;
+        private int tankcount;
+
         public int GetVirusCount()
         {
             return viruscount;
@@ -28,6 +29,30 @@ public class WaveScript : MonoBehaviour {
         public void SetVirusCount(int n)
         {
             viruscount = n;
+        }
+        public int GetRangerCount()
+        {
+            return rangercount;
+        }
+        public void SetRangerCount(int n)
+        {
+            rangercount = n;
+        }
+        public int GetBruiserCount()
+        {
+            return bruisercount;
+        }
+        public void SetBruiserCount(int n)
+        {
+            bruisercount = n;
+        }
+        public int GetTankCount()
+        {
+            return tankcount;
+        }
+        public void SetTankCount(int n)
+        {
+            tankcount = n;
         }
 
     }
@@ -54,13 +79,13 @@ public class WaveScript : MonoBehaviour {
             spawnPoints[randomSpawn].GetComponent<SpawnScript>().SpawnEnemies(4, virusEnemy);
         }
 
-        if (Input.GetKeyDown("1") && enemies.Length < 101)
+        if (Input.GetKeyDown("y") && enemies.Length < 101)
         {
             int randomSpawn = Random.Range(0, spawnPoints.Length);
             int v = squadList[0].GetVirusCount();
             spawnPoints[randomSpawn].GetComponent<SpawnScript>().SpawnEnemies(v, virusEnemy);
         }
-        if (Input.GetKeyDown("2") && enemies.Length < 101)
+        if (Input.GetKeyDown("u") && enemies.Length < 101)
         {
             int randomSpawn = Random.Range(0, spawnPoints.Length);
             int v = squadList[4].GetVirusCount();

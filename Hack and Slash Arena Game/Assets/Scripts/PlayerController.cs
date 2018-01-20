@@ -75,26 +75,14 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // change this when keyboard switch changes to menu
-        if (Input.GetKey("k"))
+        //if (Input.GetKey("k"))
         {
             if (!keyboard_activated) {
-                inputHorizLeft = ChangeNum(inputHorizLeft, controlNumber);
-                inputVertLeft = ChangeNum(inputVertLeft, controlNumber);
-                inputHorizRight = ChangeNum(inputHorizRight, controlNumber);
-                inputVertRight = ChangeNum(inputVertRight, controlNumber);
-                atkPrimary = ChangeNum(atkPrimary, controlNumber);
-                atkSecondary = ChangeNum(atkSecondary, controlNumber);
-                changeAtk = ChangeNum(changeAtk, controlNumber);
+                changeControls(controlNumber);
             }
             else
             {
-                inputHorizLeft = ChangeNum(inputHorizLeft, controlNumberK);
-                inputVertLeft = ChangeNum(inputVertLeft, controlNumberK);
-                inputHorizRight = ChangeNum(inputHorizRight, controlNumberK);
-                inputVertRight = ChangeNum(inputVertRight, controlNumberK);
-                atkPrimary = ChangeNum(atkPrimary, controlNumberK);
-                atkSecondary = ChangeNum(atkSecondary, controlNumberK);
-                changeAtk = ChangeNum(changeAtk, controlNumberK);
+                changeControls(controlNumberK);
             }
         }
 
@@ -263,6 +251,17 @@ public class PlayerController : MonoBehaviour {
 
         // clamp max velocity
         rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxVelocity);
+    }
+
+    private void changeControls(char num)
+    {
+        inputHorizLeft = ChangeNum(inputHorizLeft, num);
+        inputVertLeft = ChangeNum(inputVertLeft, num);
+        inputHorizRight = ChangeNum(inputHorizRight, num);
+        inputVertRight = ChangeNum(inputVertRight, num);
+        atkPrimary = ChangeNum(atkPrimary, num);
+        atkSecondary = ChangeNum(atkSecondary, num);
+        changeAtk = ChangeNum(changeAtk, num);
     }
 
     private string ChangeNum(string str, char num)

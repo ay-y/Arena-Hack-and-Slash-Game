@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 95580418467015570}
   - component: {fileID: 54201291419208392}
   - component: {fileID: 136752481340357474}
-  - component: {fileID: 114333685316119564}
+  - component: {fileID: 114481518572739916}
   - component: {fileID: 114622626351753336}
   m_Layer: 0
   m_Name: Player
@@ -695,7 +695,7 @@ Transform:
   m_GameObject: {fileID: 1498652761374864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 9.9, z: 38.45}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 7.18, y: 5, z: 10.16}
   m_Children:
   - {fileID: 4086585339336034}
   m_Father: {fileID: 4683958535448812}
@@ -891,7 +891,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114333685316119564
+--- !u!114 &114481518572739916
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -908,6 +908,7 @@ MonoBehaviour:
   damageImage: {fileID: 0}
   flashSpeed: 5
   flashcolour: {r: 1, g: 0, b: 0, a: 0.1}
+  regen: 0
 --- !u!114 &114622626351753336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -930,6 +931,7 @@ MonoBehaviour:
   W2Primary: {fileID: 1681479720519980, guid: b4989dc825c37934fafc7614530446ee, type: 2}
   W2Secondary: {fileID: 1254257751582510, guid: 6c4779363db8678439fd527b1fcff507,
     type: 2}
+  weaponName: stick
 --- !u!136 &136752481340357474
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1045,7 +1047,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c81616825db9ce34886c9cc1a53e3034, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b88760eeb870c8b4b9e2e3f091823d77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
