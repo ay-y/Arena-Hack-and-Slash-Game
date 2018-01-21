@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     bool keyboard_activated = false;
-    public char controlNumber = '1';
-    public char controlNumberK = '0';
+    public char controlNumber;
+    public char controlNumberK;
     public Collider targetPlane;
     private float lookSpeed = 0.5f;
     
@@ -60,13 +60,7 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         rigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        inputHorizLeft = ChangeNum(inputHorizLeft, controlNumber);
-        inputVertLeft = ChangeNum(inputVertLeft, controlNumber);
-        inputHorizRight = ChangeNum(inputHorizRight, controlNumber);
-        inputVertRight = ChangeNum(inputVertRight, controlNumber);
-        atkPrimary = ChangeNum(atkPrimary, controlNumber);
-        atkSecondary = ChangeNum(atkSecondary, controlNumber);
-        changeAtk = ChangeNum(changeAtk, controlNumber);
+        changeControls(controlNumber);
         // W1Primary = GameObject.Find("Sphere");
         Primary = W1Primary.GetComponent<AttackScript>();
         weapon = transform.Find("Weapon").gameObject;
@@ -118,8 +112,9 @@ public class PlayerController : MonoBehaviour {
         }
 
         var rdirection = new Vector3(rsticky, 0, rstickx);
-        var rrotation = Quaternion.LookRotation(rdirection, Vector3.up);        
+        var rrotation = Quaternion.LookRotation(rdirection, Vector3.up);
         Vector2 rstickInput = new Vector2(rstickx, rsticky);
+
 
 
         // check deadzone and set player rotation to preferred stick

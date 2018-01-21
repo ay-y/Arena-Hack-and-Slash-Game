@@ -65,12 +65,13 @@ public class WaveScript : MonoBehaviour {
         spawnPoints = GameObject.FindGameObjectsWithTag("Spawn");
         squadList = new Squad[30];
         squadList = InitializeSquads();
-
+        Debug.Log(squadList[4].GetVirusCount());
     }
 
     // Update is called once per frame
     void Update() {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
 
         if (debug && Input.GetKeyDown("m") && enemies.Length < 101)
         {
@@ -98,7 +99,7 @@ public class WaveScript : MonoBehaviour {
         //timerText.text = timer.ToString();
     }
 
-    private Squad[] InitializeSquads() {
+    public static Squad[] InitializeSquads() {
 
         /*
         Intensity = difficulty of the squads
@@ -111,14 +112,15 @@ public class WaveScript : MonoBehaviour {
         5: 21 - 30
         */
 
-        Squad[] squadList = new Squad[30];
-        squadList[0].SetVirusCount(1);
-        squadList[1].SetVirusCount(2);
-        squadList[2].SetVirusCount(3);
-        squadList[3].SetVirusCount(4);
-        squadList[4].SetVirusCount(10);
+        Squad[] squadsList = new Squad[30];
 
-        return squadList;
+        squadsList[0].SetVirusCount(1);
+        squadsList[1].SetVirusCount(2);
+        squadsList[2].SetVirusCount(3);
+        squadsList[3].SetVirusCount(4);
+        squadsList[4].SetVirusCount(10);
+
+        return squadsList;
     } 
     
 }
