@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour {
 
-    private float lookTime = 1.5f;
+    public float lookTime = 0.5f;
     private Vector3 velocity = Vector3.zero;
     private GameObject[] players;
     private int playerCount;
+    public int cameraHeight;
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +31,7 @@ public class CameraScript : MonoBehaviour {
             }
         }
         target = target / players.Length;
-        target = new Vector3(target.x, 35.0f, target.z - 10);
+        target = new Vector3(target.x, cameraHeight, target.z - 10);
         transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, lookTime);
 	}
 }

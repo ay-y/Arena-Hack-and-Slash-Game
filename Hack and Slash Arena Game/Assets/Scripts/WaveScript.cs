@@ -63,7 +63,6 @@ public class WaveScript : MonoBehaviour {
         //timerText = GameObject.Find("TimerText").GetComponent<Text>();
         timer = 10.0f;
         spawnPoints = GameObject.FindGameObjectsWithTag("Spawn");
-        squadList = new Squad[30];
         squadList = InitializeSquads();
         Debug.Log(squadList[4].GetVirusCount());
     }
@@ -79,7 +78,6 @@ public class WaveScript : MonoBehaviour {
             //Debug.Log(randomSpawn);
             spawnPoints[randomSpawn].GetComponent<SpawnScript>().SpawnEnemies(4, virusEnemy);
         }
-
         if (Input.GetKeyDown("y") && enemies.Length < 101)
         {
             int randomSpawn = Random.Range(0, spawnPoints.Length);
@@ -92,7 +90,6 @@ public class WaveScript : MonoBehaviour {
             int v = squadList[4].GetVirusCount();
             spawnPoints[randomSpawn].GetComponent<SpawnScript>().SpawnEnemies(v, virusEnemy);
         }
-
 
         // wave timer
         //timer = timer - Time.deltaTime;
@@ -119,6 +116,7 @@ public class WaveScript : MonoBehaviour {
         squadsList[2].SetVirusCount(3);
         squadsList[3].SetVirusCount(4);
         squadsList[4].SetVirusCount(10);
+        Debug.Log(squadsList[4].GetVirusCount());
 
         return squadsList;
     } 

@@ -10,6 +10,29 @@ public class PlayerController : MonoBehaviour {
     public char controlNumberK;
     public Collider targetPlane;
     private float lookSpeed = 0.5f;
+
+
+    /*
+     * 0 = staff
+     * 1 = sword
+     * 2 = bow
+     */
+    public int weaponAnim = 0;
+
+
+    /*
+     * 0 = not attacking
+     * 1 = state 1:
+     *      staff: fire
+     *      sword: begin swing 1 (R to L)
+     *      bow: pull back
+     * 2 = state 2:
+     *      staff: time after firing that staff is still raised for next shot
+     *      sword: begin swing 2 (L to R)
+     *      bow: fire
+     * Set state back to 0 to end animations
+     */
+    private int attackState = 0;
     
 
     private Rigidbody rigidBody;
@@ -64,6 +87,9 @@ public class PlayerController : MonoBehaviour {
         // W1Primary = GameObject.Find("Sphere");
         Primary = W1Primary.GetComponent<AttackScript>();
         weapon = transform.Find("Weapon").gameObject;
+        anim.SetInteger("weapon", weaponAnim);
+        anim.SetInteger("attackState", attackState);
+        
     }
 
     // Update is called once per frame

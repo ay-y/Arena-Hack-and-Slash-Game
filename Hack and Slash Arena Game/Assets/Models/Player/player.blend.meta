@@ -32,6 +32,7 @@ ModelImporter:
     100048: upperBody
     100050: upperLeg_L
     100052: upperLeg_R
+    100054: weapon
     400000: Armature
     400002: Character_Mesh
     400004: finger_L
@@ -59,6 +60,7 @@ ModelImporter:
     400048: upperBody
     400050: upperLeg_L
     400052: upperLeg_R
+    400054: weapon
     4300000: Character_Mesh
     7400000: Default Take
     7400002: ArmatureAction
