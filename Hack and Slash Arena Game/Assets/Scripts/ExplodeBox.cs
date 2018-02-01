@@ -20,7 +20,7 @@ public class ExplodeBox : MonoBehaviour {
         {
                 Vector3 diff = player.transform.position - transform.position;
                 float curDistance = diff.sqrMagnitude;
-                // heal every half second
+                // Hurt enemies near area
                 if (curDistance < 80.0f)
                 {
                     PlayerHealth pHealth = player.GetComponent<PlayerHealth>();
