@@ -301,9 +301,9 @@ InputManager:
     positiveButton: joystick 1 button 10
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 5
+    gravity: 0
+    dead: 0.19
+    sensitivity: 10
     snap: 1
     invert: 1
     type: 2
@@ -317,9 +317,9 @@ InputManager:
     positiveButton: joystick 2 button 10
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 5
-    dead: 0.001
-    sensitivity: 5
+    gravity: 0
+    dead: 0.19
+    sensitivity: 10
     snap: 1
     invert: 1
     type: 2
@@ -333,9 +333,9 @@ InputManager:
     positiveButton: enter
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 5
-    dead: 0.001
-    sensitivity: 3
+    gravity: 0
+    dead: 0.19
+    sensitivity: 10
     snap: 1
     invert: 1
     type: 2
@@ -349,9 +349,9 @@ InputManager:
     positiveButton: enter
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 5
+    gravity: 0
+    dead: 0.19
+    sensitivity: 10
     snap: 1
     invert: 1
     type: 2
@@ -381,9 +381,9 @@ InputManager:
     positiveButton: mouse 1
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 5
+    gravity: 0
+    dead: 0.19
+    sensitivity: 10
     snap: 1
     invert: 0
     type: 2
@@ -397,9 +397,9 @@ InputManager:
     positiveButton: mouse 1
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 5
+    gravity: 0
+    dead: 0.19
+    sensitivity: 10
     snap: 1
     invert: 0
     type: 2
@@ -413,9 +413,9 @@ InputManager:
     positiveButton: mouse 1
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 5
+    gravity: 0
+    dead: 0.19
+    sensitivity: 10
     snap: 1
     invert: 0
     type: 2
@@ -429,9 +429,9 @@ InputManager:
     positiveButton: mouse 1
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 5
+    gravity: 0
+    dead: 0.19
+    sensitivity: 10
     snap: 1
     invert: 0
     type: 2
