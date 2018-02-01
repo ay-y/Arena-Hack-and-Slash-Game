@@ -77,15 +77,15 @@ public class PlayerController : MonoBehaviour {
         staff = GetComponent<StaffWeapon>();
         rigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-<<<<<<< HEAD
+
         changeControls(controlNumber);
         // W1Primary = GameObject.Find("Sphere");
-        Primary = W1Primary.GetComponent<AttackScript>();
+        //Primary = W1Primary.GetComponent<AttackScript>();
         weapon = transform.Find("Weapon").gameObject;
         anim.SetInteger("weapon", weaponAnim);
         anim.SetInteger("attackState", attackState);
         
-=======
+
         inputHorizLeft = ChangeNum(inputHorizLeft, controlNumber);
         inputVertLeft = ChangeNum(inputVertLeft, controlNumber);
         inputHorizRight = ChangeNum(inputHorizRight, controlNumber);
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour {
         changeAtk = ChangeNum(changeAtk, controlNumber);
         weapon = transform.Find("Weapon").gameObject;
         checkWeaponTimer = 0.0f;
->>>>>>> origin/Zeke4
+
     }
 
     // Update is called once per frame
