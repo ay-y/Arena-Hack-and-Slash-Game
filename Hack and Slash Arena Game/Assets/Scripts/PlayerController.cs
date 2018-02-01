@@ -37,27 +37,21 @@ public class PlayerController : MonoBehaviour {
     private string atkSecondary = "Secondary_P1";
     private string changeAtk = "Change_P1";
 
-	public GameObject W1Primary;
-    public float primaryCooldown = 0;
+    StaffWeapon staff;
 
-    public GameObject W1Secondary;
-    public float secondaryCooldown = 0;
-
-    public GameObject W2Primary;
-    public GameObject W2Secondary;
-
-    AttackScript Primary;
-    AttackScript Secondary;
 
     private bool equipped = true;
     private bool alreadySwitched = false;
 
-    public string weaponName = "stick";
+    public string weaponName;
     private GameObject weapon;
 
+    private float checkWeaponTimer;
 
     // Use this for initialization
     void Start () {
+        weaponName = "staff";
+        staff = GetComponent<StaffWeapon>();
         rigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         inputHorizLeft = ChangeNum(inputHorizLeft, controlNumber);
@@ -67,9 +61,8 @@ public class PlayerController : MonoBehaviour {
         atkPrimary = ChangeNum(atkPrimary, controlNumber);
         atkSecondary = ChangeNum(atkSecondary, controlNumber);
         changeAtk = ChangeNum(changeAtk, controlNumber);
-        // W1Primary = GameObject.Find("Sphere");
-        Primary = W1Primary.GetComponent<AttackScript>();
         weapon = transform.Find("Weapon").gameObject;
+        checkWeaponTimer = 0.0f;
     }
 
     // Update is called once per frame
@@ -195,33 +188,26 @@ public class PlayerController : MonoBehaviour {
         anim.SetFloat("y", lookY);
 
 
-        //Debug.Log(directionOfVelocity);
-        //Debug.Log(directionOfLook);
-        //Debug.Log(lookCompare);
-
         //Check to see if primary attack should happen
-        if ((Input.GetAxis(atkPrimary) > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+        if (Input.GetAxis(atkPrimary) > 0.9f)
         {
-            PrimaryAttack();
+            if (weaponName == "staff")
+            {
+                staff.PrimaryAttack();
+            }
         }
 
-        //Cooldown for primary attack
-        if (primaryCooldown.CompareTo(0) > 0)
-        {
-            primaryCooldown -= Time.deltaTime;
-        }
 
         //Check to see if Secondary attack should happen
-        if ((Input.GetAxis(atkSecondary) > 0.9f) & primaryCooldown.CompareTo(0) <= 0)
+        if (Input.GetAxis(atkSecondary) > 0.9f)
         {
-            SecondaryAttack();
+            if (weaponName == "staff")
+            {
+                staff.SecondaryAttack();
+            }
         }
 
-        //Cooldown for secondary attack
-        if (secondaryCooldown.CompareTo(0) > 0)
-        {
-            secondaryCooldown -= Time.deltaTime;
-        }
+      
 
         //Check to see if equipment should be switched
         if (Input.GetButton(changeAtk) && !alreadySwitched)
@@ -233,19 +219,6 @@ public class PlayerController : MonoBehaviour {
             alreadySwitched = false;
         }
         
-
-        //update attack reference
-       /* if(equipped)
-        {
-            Primary = W1Primary.GetComponent<AttackScript>();
-            Secondary = W1Secondary.GetComponent<AttackScript>();
-
-        } else 
-        {
-            Primary = W2Primary.GetComponent<AttackScript>();
-            Secondary = W2Secondary.GetComponent<AttackScript>();
-        }
-        */
 
     }
 
@@ -273,54 +246,26 @@ public class PlayerController : MonoBehaviour {
         str = sb.ToString();
         return str;
     }
-
+    /*
 	private void PrimaryAttack()
 	{
         var fireHeight = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-
-        // Create the projectile 
-       // GameObject attack = null;
-        //if (equipped)
-        //{
-            GameObject attack = (GameObject)Instantiate(
+       
+        GameObject attack = (GameObject)Instantiate(
             W1Primary,
             fireHeight,
             transform.rotation);
 
             // Add velocity to the bullet
-             attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * W1Primary.GetComponent<AttackScript>().getSpeed();
+        attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * W1Primary.GetComponent<AttackScript>().getSpeed();
 
             // Destroy the bullet after specified amount of time
-           Destroy(attack, W1Primary.GetComponent<AttackScript>().getDestroyTime());
+        Destroy(attack, W1Primary.GetComponent<AttackScript>().getDestroyTime());
 
             //Primary cooldown 
-            primaryCooldown = W1Primary.GetComponent<AttackScript>().getCooldown();
-        //} else
-        //{
-          //  var attack = (GameObject)Instantiate(
-            //W2Primary,
-            //fireHeight,
-            //transform.rotation);
+        primaryCooldown = W1Primary.GetComponent<AttackScript>().getCooldown();
+     
 
-            // Add velocity to the bullet
-            //attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * Primary.getSpeed();
-
-            // Destroy the bullet after specified amount of time
-//            Destroy(attack, Primary.getDestroyTime());
-
-            //Primary cooldown 
-  //          primaryCooldown = Primary.getCooldown();
-    //    }
-
-		// Add velocity to the bullet
-
-		//attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * Primary.getSpeed();
-
-		// Destroy the bullet after specified amount of time
-		//Destroy(attack, Primary.getDestroyTime());
-
-        //Primary cooldown 
-        //primaryCooldown = Primary.getCooldown();
 
 		attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * 60.0f;
 
@@ -362,6 +307,7 @@ public class PlayerController : MonoBehaviour {
         //secondary cooldown 
         secondaryCooldown = 1.0f;
     }
+    */
 
     public void ChangeWeapon(string wep)
     {
