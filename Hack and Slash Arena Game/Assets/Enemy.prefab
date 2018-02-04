@@ -372,8 +372,6 @@ GameObject:
   - component: {fileID: 54738401150068232}
   - component: {fileID: 136467865723575284}
   - component: {fileID: 114145341242143766}
-  - component: {fileID: 114129353483777806}
-  - component: {fileID: 114795566650566214}
   - component: {fileID: 95536623401289750}
   m_Layer: 0
   m_Name: Enemy
@@ -983,19 +981,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114129353483777806
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717602914949050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c25d4b703e61144a94d3c89bcfe1fe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.5
-  attackDamage: 10
 --- !u!114 &114145341242143766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1010,17 +995,6 @@ MonoBehaviour:
   startingHealth: 50
   currentHealth: 0
   isDamaged: 0
---- !u!114 &114795566650566214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717602914949050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5508119ac3224d4c9421cc4999bcf3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &136467865723575284
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -115,18 +115,21 @@ public class PlayerController : MonoBehaviour {
         anim.SetFloat("velocity", rigidBody.velocity.magnitude);
         //Debug.Log(rigidBody.velocity.magnitude);
 
-        float deadzone = 0.25f;
+        float deadzone = 0.19f;
         GameObject settings = GameObject.Find("Global Settings");
         keyboard_activated = settings.GetComponent<GlobalSettings>().keyboard_activated;
         Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         // floats for stick input
-        if (!(keyboard_activated && controlNumberK == '0'))
+        if (!(keyboard_activated && controlNumberK == '0') && (Input.GetAxis(inputHorizLeft) < -deadzone || Input.GetAxis(inputHorizLeft) > deadzone || Input.GetAxis(inputVertLeft) < -deadzone || Input.GetAxis(inputVertLeft) > deadzone))
         {
             lstickx = Input.GetAxis(inputHorizLeft) + 0.0001f;
             lsticky = Input.GetAxis(inputVertLeft) + 0.0001f;
+        } else
+        {
+            lstickx = 0;
+            lsticky = 0;
         }
-
         // create a direction vector based on input floats
         var ldirection = new Vector3(-lsticky, 0, lstickx);
         // set vector to quaternion (angle vector)
@@ -137,10 +140,15 @@ public class PlayerController : MonoBehaviour {
 
 
         // same as above but for the right stick
-        if (!(keyboard_activated && controlNumberK == '0'))
+        if (!(keyboard_activated && controlNumberK == '0') && (Input.GetAxis(inputHorizRight) < -deadzone || Input.GetAxis(inputHorizRight) > deadzone || Input.GetAxis(inputVertRight) < -deadzone || Input.GetAxis(inputVertRight) > deadzone))
         {
             rstickx = Input.GetAxis(inputHorizRight) + 0.0001f;
             rsticky = Input.GetAxis(inputVertRight) + 0.0001f;
+        }
+        else
+        {
+            rstickx = 0;
+            rsticky = 0;
         }
 
         var rdirection = new Vector3(rsticky, 0, rstickx);
