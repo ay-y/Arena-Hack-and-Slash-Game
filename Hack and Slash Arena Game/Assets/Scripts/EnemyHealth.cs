@@ -18,8 +18,9 @@ public class EnemyHealth : MonoBehaviour {
         //healthSlider = gameObject.GetComponentInChildren<Slider>();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, GameObject lastProj)
     {
+
         isDamaged = true;
         currentHealth -= damage;
         //healthSlider.value = currentHealth;
@@ -29,15 +30,7 @@ public class EnemyHealth : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "PlayerProjectile" && collision.gameObject != lastProj)
-        {
-            int damage = collision.gameObject.GetComponent<AttackScript>().getDamage();
-            this.TakeDamage(damage);
-            lastProj = collision.gameObject;
-        }
-    }
+   
 
     private void Death()
     {

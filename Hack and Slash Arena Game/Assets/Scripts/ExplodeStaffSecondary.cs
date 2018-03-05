@@ -25,7 +25,7 @@ public class ExplodeStaffSecondary : MonoBehaviour
             if (curDistance < 120.0f)
             {
                 EnemyHealth eHealth = enemy.GetComponent<EnemyHealth>();
-                eHealth.TakeDamage(damage);
+                eHealth.TakeDamage(damage, gameObject);
             }
 
 

@@ -79,8 +79,6 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         changeControls(controlNumber);
-        // W1Primary = GameObject.Find("Sphere");
-        //Primary = W1Primary.GetComponent<AttackScript>();
         weapon = transform.Find("Weapon").gameObject;
         anim.SetInteger("weapon", weaponAnim);
         anim.SetInteger("attackState", attackState);
@@ -113,7 +111,6 @@ public class PlayerController : MonoBehaviour {
         }
 
         anim.SetFloat("velocity", rigidBody.velocity.magnitude);
-        //Debug.Log(rigidBody.velocity.magnitude);
 
         float deadzone = 0.25f;
         GameObject settings = GameObject.Find("Global Settings");
@@ -279,68 +276,6 @@ public class PlayerController : MonoBehaviour {
         str = sb.ToString();
         return str;
     }
-    /*
-	private void PrimaryAttack()
-	{
-        var fireHeight = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-       
-        GameObject attack = (GameObject)Instantiate(
-            W1Primary,
-            fireHeight,
-            transform.rotation);
-
-            // Add velocity to the bullet
-        attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * W1Primary.GetComponent<AttackScript>().getSpeed();
-
-            // Destroy the bullet after specified amount of time
-        Destroy(attack, W1Primary.GetComponent<AttackScript>().getDestroyTime());
-
-            //Primary cooldown 
-        primaryCooldown = W1Primary.GetComponent<AttackScript>().getCooldown();
-     
-
-
-		attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * 60.0f;
-
-		// Destroy the bullet after specified amount of time
-		Destroy(attack, 2.0f);
-
-        //Primary cooldown 
-        primaryCooldown = 0.2f;
-
-	}
-
-    private void SecondaryAttack()
-    {
-        var fireHeight = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-
-        // Create the projectile 
-        GameObject attack = null;
-        if (equipped)
-        {
-            attack = (GameObject)Instantiate(
-            W1Secondary,
-            fireHeight,
-            transform.rotation);
-        }
-        else
-        {
-            attack = (GameObject)Instantiate(
-            W2Secondary,
-            fireHeight,
-            transform.rotation);
-        }
-
-        // Add velocity to the bullet
-        attack.GetComponent<Rigidbody>().velocity = attack.transform.forward * 80.0f;
-
-        // Destroy the bullet after specified amount of time
-        Destroy(attack, 1.5f);
-
-        //secondary cooldown 
-        secondaryCooldown = 1.0f;
-    }
-    */
 
     public void ChangeWeapon(string wep)
     {
